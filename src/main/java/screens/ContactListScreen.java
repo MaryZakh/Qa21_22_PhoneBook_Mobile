@@ -21,7 +21,7 @@ public class ContactListScreen extends BaseScreen {
     @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/title']")
     MobileElement logoutButton;
 
-    @FindBy(id = "com.sheygam.contactapp:id/add_contact_btn")
+    @FindBy(xpath = "//*[@content-desc='add']")
     MobileElement plusBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/rowName'")
@@ -46,13 +46,17 @@ public class ContactListScreen extends BaseScreen {
     }
 
     public AddNewContatSreen openContactForm(){
-        plusBtn.click();
+        if(activityTextView.getText().equals("Contact list")) {
+            should(plusBtn, 5);
+            plusBtn.click();
+        }
         return new AddNewContatSreen(driver);
     }
 
     public ContactListScreen isContactAddedByName(String name, String lastName){
         //List<MobileElement> list = driver.findElements(By.xpath(""));
-        isShouldHave(activityTextView,"Contact list",5);
+        isShouldHave(activityTextView,"Contact list",10);
+        System.out.println("size of list" +contactNameList.size());
         boolean isPresent = false;
         for (MobileElement element:contactNameList){
             if (element.getText().equals(name+ " "+ lastName)){
