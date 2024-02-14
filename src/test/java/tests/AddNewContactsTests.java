@@ -22,13 +22,13 @@ public class AddNewContactsTests extends AppiumConfig {
                 .isActivityTitleDisplayed("Contact list");
     }
 
-    @Test
+    @Test(invocationCount = 3)
     public void createNewContactSuccess() {
         int i = new Random().nextInt(1000) + 1000;
         Contact contact = Contact.builder()
                 .name("John")
                 .lastName("Wow" + i)
-                .email("qwe" + i + "@mail.com")
+                .email("aww" + i + "@gmail.com")
                 .phone("54565489" + i)
                 .address("NY")
                 .description("Friend")
@@ -44,9 +44,9 @@ public class AddNewContactsTests extends AppiumConfig {
     public void createNewContactSuccessReq() {
         int i = new Random().nextInt(1000) + 1000;
         Contact contact = Contact.builder()
-                .name("Jane")
-                .lastName("Hgy" + i)
-                .email("qwe" + i + "@mail.com")
+                .name("Steve")
+                .lastName("Ugly" + i)
+                .email("aww" + i + "@gmail.com")
                 .phone("54565456" + i)
                 .address("California")
                 .build();
@@ -61,8 +61,8 @@ public class AddNewContactsTests extends AppiumConfig {
     @Test
     public void createContactWithEmptyName() {
         Contact contact = Contact.builder()
-                .lastName("Wowl")
-                .email("qwe@mail.com")
+                .lastName("Wool")
+                .email("awwa@gmail.com")
                 .phone("545654894586")
                 .address("NY")
                 .description("Empty name")
@@ -76,10 +76,10 @@ public class AddNewContactsTests extends AppiumConfig {
     @Test
     public void createContactWithEmptyLastName() {
         Contact contact = Contact.builder()
-                .name("Dave")
-                .email("qwe5@mail.com")
+                .name("Rony")
+                .email("awwa@gmail.com")
                 .phone("545654894523")
-                .address("NY")
+                .address("NJ")
                 .description("Empty lastName")
                 .build();
         new ContactListScreen(driver)

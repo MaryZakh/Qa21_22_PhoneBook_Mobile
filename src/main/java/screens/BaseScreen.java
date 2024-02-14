@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class BaseScreen {
     AppiumDriver<MobileElement> driver;
 
@@ -19,8 +21,8 @@ public class BaseScreen {
 
     public void type(MobileElement element, String text) {
 
-            element.click();
-            element.clear();
+        element.click();
+        element.clear();
         if (text != null) {
             element.sendKeys(text);
         }
@@ -36,12 +38,25 @@ public class BaseScreen {
         new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void checkAlertText(String text){
-        Alert alert = new WebDriverWait(driver,10)
+    public void checkAlertText(String text) {
+        Alert alert = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert();
         Assert.assertTrue(alert.getText().contains(text));
         alert.accept();
     }
 
+    public boolean isElementDisplayed(MobileElement element) {
+        try {
+            should(element,5);
+            return element.isDisplayed();
+        } catch (IllegalAccessError e) {
+            return false;
+
+        }
+    }
+
+    public boolean isElementPresentInList(List<MobileElement> list){
+        return list.size()>0;
+    }
 }
