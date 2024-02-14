@@ -5,8 +5,8 @@ import io.appium.java_client.MobileElement;
 import models.Contact;
 import org.openqa.selenium.support.FindBy;
 
-public class AddNewContactSreen extends BaseScreen{
-    public AddNewContactSreen(AppiumDriver<MobileElement> driver) {
+public class AddNewContactSсreen extends BaseScreen{
+    public AddNewContactSсreen(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
@@ -26,7 +26,7 @@ public class AddNewContactSreen extends BaseScreen{
     MobileElement createBtn;
 
 
-    public AddNewContactSreen fillContactForm(Contact contact){
+    public AddNewContactSсreen fillContactForm(Contact contact){
         should(nameEditText,5);
         type(nameEditText,contact.getName());
         type(lastNameEditText,contact.getLastName());
@@ -42,12 +42,12 @@ public class AddNewContactSreen extends BaseScreen{
         return new ContactListScreen(driver);
     }
 
-    public AddNewContactSreen submitContactFormNegative(){
+    public AddNewContactSсreen submitContactFormNegative(){
         createBtn.click();
         return this;
     }
 
-    public AddNewContactSreen isErrorContainsText(String text){
+    public AddNewContactSсreen isErrorContainsText(String text){
         checkAlertText(text);
         return this;
     }

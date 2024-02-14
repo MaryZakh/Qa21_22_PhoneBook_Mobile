@@ -2,7 +2,6 @@ package screens;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -42,12 +41,12 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
-    public AddNewContactSreen openContactForm() {
+    public AddNewContactSсreen openContactForm() {
         if (activityTextView.getText().equals("Contact list")) {
             should(plusBtn, 5);
             plusBtn.click();
         }
-        return new AddNewContactSreen(driver);
+        return new AddNewContactSсreen(driver);
     }
 
     public ContactListScreen isContactAddedByName(String name,String lastName){
@@ -56,7 +55,7 @@ public class ContactListScreen extends BaseScreen {
         System.out.println("size of list " +contactNameList.size());
         boolean isPresent=false;
 
-        for (MobileElement el:contactNameList) {
+        for (MobileElement el: contactNameList) {
             if(el.getText().equals(name + " "+lastName)){
                 isPresent = true;
                 break;
