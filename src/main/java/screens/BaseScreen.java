@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -58,5 +59,11 @@ public class BaseScreen {
 
     public boolean isElementPresentInList(List<MobileElement> list){
         return list.size()>0;
+    }
+
+    public void shouldLessOne(List<MobileElement>list, int less){
+        new WebDriverWait(driver,10)
+                .until(ExpectedConditions.numberOfElementsToBeLessThan
+                        (By.xpath("//*[@resource-id='com.sheygam.contactapp:id/rowContainer']"),less));
     }
 }
