@@ -15,21 +15,18 @@ public class ContactListScreen extends BaseScreen {
 
     @FindBy(xpath = "//*[@resource-id = 'com.sheygam.contactapp:id/action_bar']/android.widget.TextView")
     MobileElement activityTextView;
-
     @FindBy(xpath = "//*[@content-desc='More options']")
     MobileElement menuOptions;
-    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/title']")
+    @FindBy(xpath = "//*[@text='Logout']")
     MobileElement logoutButton;
-
     @FindBy(xpath = "//*[@content-desc='add']")
     MobileElement plusBtn;
-
-    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/rowName'")
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/rowName']")
     List<MobileElement> contactNameList;
 
     public boolean isActivityTitleDisplayed(String text) {
-        //return activityTextView.getText().contains("Contact list");
-        return isShouldHave(activityTextView, text, 10);
+        // return activityTextView.getText().contains("Contact list");
+        return isShouldHave(activityTextView, text, 8);
     }
 
     public AuthenticationScreen logout() {
@@ -45,12 +42,12 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
-    public AddNewContatSreen openContactForm() {
+    public AddNewContactSreen openContactForm() {
         if (activityTextView.getText().equals("Contact list")) {
             should(plusBtn, 5);
             plusBtn.click();
         }
-        return new AddNewContatSreen(driver);
+        return new AddNewContactSreen(driver);
     }
 
     public ContactListScreen isContactAddedByName(String name,String lastName){
@@ -72,6 +69,5 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
+
 }
-
-
