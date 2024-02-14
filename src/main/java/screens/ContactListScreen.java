@@ -45,27 +45,33 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
-    public AddNewContatSreen openContactForm(){
-        if(activityTextView.getText().equals("Contact list")) {
+    public AddNewContatSreen openContactForm() {
+        if (activityTextView.getText().equals("Contact list")) {
             should(plusBtn, 5);
             plusBtn.click();
         }
         return new AddNewContatSreen(driver);
     }
 
-    public ContactListScreen isContactAddedByName(String name, String lastName){
-        //List<MobileElement> list = driver.findElements(By.xpath(""));
-        isShouldHave(activityTextView,"Contact list",10);
-        System.out.println("size of list" +contactNameList.size());
-        boolean isPresent = false;
-        for (MobileElement element:contactNameList){
-            if (element.getText().equals(name+ " "+ lastName)){
-                isPresent=true;
+    public ContactListScreen isContactAddedByName(String name,String lastName){
+        // List<AndroidElement> list =  driver.findElements(By.xpath(""));
+        isShouldHave(activityTextView,"Contact list",5);
+        System.out.println("size of list " +contactNameList.size());
+        boolean isPresent=false;
+
+        for (MobileElement el:contactNameList) {
+            if(el.getText().equals(name + " "+lastName)){
+                isPresent = true;
                 break;
             }
+
         }
+
         Assert.assertTrue(isPresent);
-        return  this;
+
+        return this;
     }
 
 }
+
+
