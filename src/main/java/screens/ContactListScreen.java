@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -32,6 +33,9 @@ public class ContactListScreen extends BaseScreen {
 
     @FindBy(id = "android:id/button1")
     MobileElement OkBtn;
+
+    @FindBy(id="com.sheygam.contactapp:id/emptyTxt")
+            MobileElement noContactsHereTextView;
     int countBefore;
     int countAfter;
 
@@ -125,4 +129,17 @@ public class ContactListScreen extends BaseScreen {
         return this;
     }
 
+    public ContactListScreen removeAllContacts(){
+        System.out.println("contact list" + contactList.size());
+        pause(1000);
+        while(driver.findElements(By.xpath("//*[@resource-id='com.sheygam.contactapp:id/rowContainer']")).size()>0){
+            deleteFirstContact();
+        }
+        return this;
+    }
+
+    public ContactListScreen isNoContactsHere(){
+        isShouldHave(noContactsHereTextView, "No Contacts. Add One more!",10);
+        return this;
+    }
 }

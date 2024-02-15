@@ -66,4 +66,12 @@ public class BaseScreen {
                 .until(ExpectedConditions.numberOfElementsToBeLessThan
                         (By.xpath("//*[@resource-id='com.sheygam.contactapp:id/rowContainer']"),less));
     }
+
+    public void pause(int time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
